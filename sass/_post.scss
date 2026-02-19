@@ -1,0 +1,359 @@
+// ── Index: clean date + title list ──────────────────────────────────
+
+.post-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.post-list-item {
+  display: flex;
+  align-items: baseline;
+  gap: 1.25em;
+  padding: 0.65em 0;
+  border-bottom: 1px solid $border-light;
+
+  &:first-child {
+    border-top: 1px solid $border-light;
+  }
+}
+
+.post-list-date {
+  color: $text-muted;
+  font-size: 0.8em;
+  font-family: $font-family-mono;
+  white-space: nowrap;
+  flex-shrink: 0;
+  min-width: 6.25em;
+}
+
+.post-list-title {
+  a {
+    color: $text;
+    text-decoration: none;
+    font-size: 1em;
+    font-weight: 400;
+    line-height: 1.4;
+
+    &:hover {
+      color: $orange;
+    }
+  }
+}
+
+
+// ── Single post ──────────────────────────────────────────────────────
+
+.post-block {
+  // No card chrome — clean, flat
+}
+
+.post-header {
+  margin-bottom: 2em;
+  padding-bottom: 1.5em;
+  border-bottom: 1px solid $border;
+}
+
+.post-title {
+  font-size: 2em;
+  line-height: 1.2;
+  margin: 0 0 0.5em;
+  font-weight: 600;
+  color: $text;
+
+  a {
+    color: $text;
+    text-decoration: none;
+    &:hover { color: $orange; }
+  }
+}
+
+.post-meta {
+  font-size: $font-size-smaller;
+  color: $text-muted;
+  font-family: $font-family-mono;
+  line-height: 1.8;
+
+  .post-meta-item {
+    margin-right: 1.25em;
+    display: inline-block;
+  }
+
+  .post-meta-item-icon {
+    margin-right: 0.3em;
+  }
+
+  a {
+    color: $text-muted;
+    border-bottom: 1px dashed $grey-light;
+    &:hover { color: $orange; }
+  }
+}
+
+
+// ── Post body — serif typography ─────────────────────────────────────
+
+.post-body {
+  h2, h3, h4 {
+    font-family: $font-family-base;
+    font-weight: 600;
+  }
+
+  h2 {
+    font-size: 1.5em;
+    margin-top: 2em;
+    padding-bottom: 0.3em;
+    border-bottom: 1px solid $border;
+    color: $text;
+  }
+
+  h3 {
+    font-size: 1.2em;
+    margin-top: 1.75em;
+    color: $text;
+  }
+
+  h4 {
+    font-size: 1em;
+    margin-top: 1.5em;
+    color: $text-muted;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  p {
+    margin: 0 0 1.25em;
+  }
+
+  a {
+    color: $orange;
+    text-decoration: underline;
+    text-decoration-color: rgba($orange, 0.35);
+    text-underline-offset: 2px;
+    transition: text-decoration-color 0.15s;
+
+    &:hover {
+      text-decoration-color: $orange;
+    }
+  }
+
+  ul, ol {
+    padding-left: 1.5em;
+    margin-bottom: 1.25em;
+
+    li {
+      margin-bottom: 0.4em;
+      line-height: $line-height-base;
+    }
+  }
+
+  blockquote {
+    border-left: 3px solid $orange;
+    background: rgba($orange, 0.04);
+    margin: 1.75em 0;
+    padding: 0.75em 1.25em;
+    border-radius: 0 $border-radius $border-radius 0;
+    color: $black-light;
+    font-style: italic;
+
+    p:last-child { margin-bottom: 0; }
+
+    footer {
+      margin-top: 0.5em;
+      font-style: normal;
+      font-size: $font-size-smaller;
+      color: $text-muted;
+    }
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+    margin: 2em auto;
+    border-radius: $border-radius;
+  }
+
+  figure {
+    text-align: center;
+    margin: 2em 0;
+
+    figcaption {
+      font-size: $font-size-smaller;
+      color: $text-muted;
+      margin-top: 0.5em;
+      font-style: italic;
+    }
+  }
+
+  // Inline code only — pre code is handled by _highlight.scss
+  :not(pre) > code {
+    background: $border-light;
+    color: darken($orange, 8%);
+    padding: 0.15em 0.4em;
+    border-radius: 3px;
+    font-size: 0.875em;
+    font-family: $font-family-mono;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid $border;
+    margin: 2.5em 0;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5em 0;
+    font-size: 0.9em;
+
+    th, td {
+      border: 1px solid $border;
+      padding: 0.5em 0.75em;
+    }
+
+    th {
+      background: $border-light;
+      font-weight: 600;
+      color: $text;
+    }
+  }
+}
+
+
+// ── Post footer ───────────────────────────────────────────────────────
+
+.post-footer {
+  margin-top: 3em;
+  padding-top: 1.5em;
+  border-top: 1px solid $border;
+}
+
+.post-tags {
+  margin-bottom: 1em;
+
+  a {
+    display: inline-block;
+    margin-right: 0.5em;
+    color: $text-muted;
+    font-size: $font-size-smaller;
+    text-decoration: none;
+    font-family: $font-family-mono;
+
+    &::before { content: '#'; }
+    &:hover { color: $orange; }
+  }
+}
+
+// Prev/next navigation
+.post-nav {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1em;
+  margin-top: 1em;
+
+  .post-nav-item {
+    max-width: 48%;
+
+    a {
+      color: $text-muted;
+      font-size: $font-size-smaller;
+      text-decoration: none;
+      &:hover { color: $orange; }
+    }
+
+    &.post-nav-prev { text-align: right; }
+  }
+}
+
+// "Read More" link (kept for safety)
+.post-button {
+  margin-top: 1.5em;
+
+  .btn {
+    display: inline-block;
+    padding: 0.35em 1em;
+    border: 1px solid $border;
+    border-radius: $btn-radius;
+    color: $text-muted;
+    font-size: $font-size-smaller;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+
+    &:hover {
+      border-color: $orange;
+      color: $orange;
+    }
+  }
+}
+
+
+// ── Archive list (section.html) ───────────────────────────────────────
+
+.posts-collapse {
+  .collection-title {
+    margin-bottom: 1.5em;
+
+    h2 {
+      font-size: 1.25em;
+      color: $text;
+      border: none;
+    }
+  }
+
+  .collection-year {
+    font-size: 0.875em;
+    color: $text-muted;
+    font-family: $font-family-mono;
+    font-weight: 600;
+    margin: 2em 0 0.5em;
+    padding-bottom: 0.25em;
+    border-bottom: 1px solid $border;
+  }
+}
+
+.post-collapse-item {
+  display: flex;
+  align-items: baseline;
+  gap: 1em;
+  padding: 0.4em 0;
+  border-bottom: 1px solid $border-light;
+
+  .post-collapse-date {
+    color: $text-muted;
+    font-size: $font-size-smaller;
+    font-family: $font-family-mono;
+    min-width: 4em;
+    flex-shrink: 0;
+  }
+
+  .post-collapse-title a {
+    color: $text;
+    text-decoration: none;
+    &:hover { color: $orange; }
+  }
+}
+
+
+// ── Tag cloud ─────────────────────────────────────────────────────────
+
+.tag-cloud {
+  .tag-cloud-title {
+    font-size: 1.25em;
+    font-weight: 600;
+    color: $text;
+    margin-bottom: 1em;
+  }
+
+  .tag-cloud-tags {
+    a {
+      display: inline-block;
+      margin: 0.3em;
+      color: $text-muted;
+      text-decoration: none;
+
+      &:hover { color: $orange; }
+    }
+  }
+}

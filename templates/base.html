@@ -1,0 +1,105 @@
+{% import "macros.html" as macros %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}{{ config.title }}{% endblock title %}</title>
+  <meta name="description" content="{{ config.description }}">
+  <meta name="keywords" content="{{ config.extra.keywords | default(value='') }}">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{% block og_title %}{{ config.title }}{% endblock og_title %}">
+  <meta property="og:description" content="{% block og_description %}{{ config.description }}{% endblock og_description %}">
+  <meta property="og:url" content="{% block og_url %}{{ config.base_url }}{% endblock og_url %}">
+  {% if config.extra.og_site_name %}
+    <meta property="og:site_name" content="{{ config.extra.og_site_name }}">
+  {% endif %}
+  {% if config.extra.og_image %}
+    <meta property="og:image" content="{{ config.extra.og_image }}">
+  {% endif %}
+
+  {% if config.extra.twitter_username %}
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="{{ config.extra.twitter_username }}">
+  {% endif %}
+
+  {% if config.generate_feeds %}
+    <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="{{ get_url(path='atom.xml') }}">
+  {% endif %}
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Lora:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="stylesheet" href="{{ get_url(path='linen.css', cachebust=true) }}">
+</head>
+
+<body>
+  <div class="headband"></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="{{ config.base_url }}" class="site-brand">
+        <span class="site-title">{{ config.title }}</span>
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+      </button>
+
+      {% if config.extra.menu %}
+        <nav class="site-nav">
+          <ul class="nav-menu">
+            {% for item in config.extra.menu %}
+              <li class="nav-item{% if current_path is defined and current_path == item.url %} active{% endif %}">
+                <a href="{{ item.url }}">{{ item.name }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </nav>
+      {% endif %}
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="main-inner">
+      {% block content %}{% endblock content %}
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      {% if config.extra.social %}
+        <div class="footer-social">
+          {% for item in config.extra.social %}
+            <a href="{{ item.url }}" title="{{ item.name }}" target="_blank" rel="noopener">
+              {% if item.icon %}<i class="{{ item.icon }}"></i>{% else %}{{ item.name }}{% endif %}
+            </a>
+          {% endfor %}
+        </div>
+      {% endif %}
+      <div class="footer-copyright">
+        &copy;
+        {% if config.extra.copyright_since %}{{ config.extra.copyright_since }} &ndash; {% endif %}
+        {% if config.extra.copyright_year %}{{ config.extra.copyright_year }}{% endif %}
+        {% if config.extra.author %}<span class="author">{{ config.extra.author }}</span>{% endif %}
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    var toggle = document.querySelector('.nav-toggle');
+    if (toggle) {
+      toggle.addEventListener('click', function() {
+        var nav = document.querySelector('.site-nav');
+        var open = nav.classList.toggle('open');
+        this.setAttribute('aria-expanded', open);
+      });
+    }
+  </script>
+</body>
+</html>

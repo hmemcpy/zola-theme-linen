@@ -1,0 +1,58 @@
+// Sticky top navigation bar
+.site-header {
+  background: $bg;
+  border-bottom: 1px solid $border;
+  position: sticky;
+  top: $headband-height;
+  z-index: 100;
+}
+
+.header-inner {
+  max-width: $content-max-width;
+  margin: 0 auto;
+  padding: 0 $content-padding;
+  height: $navbar-height;
+  display: flex;
+  align-items: center;
+}
+
+// Blog title link (left side)
+.site-brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  flex-shrink: 0;
+  margin-right: auto;
+}
+
+.site-title {
+  font-family: $font-family-title;
+  font-size: 1.05em;
+  color: $text;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+// Hamburger toggle (shown on mobile only)
+.nav-toggle {
+  display: none;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 8px 4px;
+  flex-shrink: 0;
+  order: 3;
+
+  .toggle-line {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: $text;
+    margin: 5px 0;
+    transition: background 0.2s;
+  }
+
+  &:hover .toggle-line {
+    background: $orange;
+  }
+}

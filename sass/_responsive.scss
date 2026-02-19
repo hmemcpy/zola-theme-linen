@@ -1,0 +1,55 @@
+// Mobile
+@media screen and (max-width: 767px) {
+  .nav-toggle {
+    display: block;
+  }
+
+  // Nav collapses into dropdown below the header
+  .site-nav {
+    display: none;
+    position: absolute;
+    top: $navbar-height + $headband-height;
+    left: 0;
+    right: 0;
+    background: $bg;
+    border-bottom: 1px solid $border;
+    z-index: 99;
+    padding: 0.5em 0 1em;
+
+    &.open { display: block; }
+  }
+
+  .site-header {
+    position: relative; // so nav dropdown is positioned relative to header
+  }
+
+  .nav-menu {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 $content-padding;
+  }
+
+  .nav-item a {
+    padding: 0.6em 0;
+    font-size: 1em;
+  }
+
+  .main {
+    padding: 1.5rem ($content-padding / 2) 3rem;
+  }
+
+  .post-nav .post-nav-item {
+    max-width: 100%;
+  }
+
+  .post-list-date {
+    min-width: 5.5em;
+  }
+}
+
+// Tablet
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .main {
+    padding: 2rem 20px 3rem;
+  }
+}

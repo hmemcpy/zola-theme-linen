@@ -1,0 +1,13 @@
+name = "linen"
+description = "Minimal single-column reading theme. Warm off-white palette, Lora serif body font, clean date+title post list."
+license = "MIT"
+homepage = "https://github.com/hmemcpy/zola-theme-linen"
+min_version = "0.19.0"
+demo = "https://hmemcpy.com"
+
+[author]
+name = "Igal Tabachnik"
+homepage = "https://hmemcpy.com"
+
+[labels]
+tags = ["blog", "minimal", "serif", "single-column"]
